@@ -1,7 +1,7 @@
 FROM fluent/fluentd:latest-onbuild
 MAINTAINER admin@acale.ph
 
-USER fluent
+#USER fluent
 WORKDIR /home/fluent
 
 ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
