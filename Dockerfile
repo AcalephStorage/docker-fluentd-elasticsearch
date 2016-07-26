@@ -8,7 +8,7 @@ ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
 
 RUN apk --no-cache --update add \
                             build-base \
-                            ruby-dev && \
+                            ruby-dev \
                             libffi-dev && \
     gem install fluent-plugin-elasticsearch && \
     gem install fluent-plugin-parser && \
