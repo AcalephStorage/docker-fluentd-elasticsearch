@@ -6,11 +6,17 @@ WORKDIR /home/fluent
 
 ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
 
-RUN gem install fluent-plugin-elasticsearch \
-                fluent-plugin-parser \
-                fluent-plugin-record-modifier \
-                fluent-plugin-record-reformer \
-                fluent-plugin-systemd
+RUN apk --no-cache --update add \
+                            build-base \
+                            ruby-dev && \
+                            libffi-dev && \
+    gem install fluent-plugin-elasticsearch && \
+    gem install fluent-plugin-parser && \
+    gem install fluent-plugin-record-modifier && \
+    gem install fluent-plugin-record-reformer && \
+    gem install fluent-plugin-systemd && \
+    apk del build-base ruby-dev libffi-dev && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 EXPOSE 24284
 
